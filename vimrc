@@ -1,3 +1,6 @@
+all pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 
 " enable plugins
 :filetype plugin on
