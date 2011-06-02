@@ -29,7 +29,7 @@ set encoding=utf-8
 :map <C-z> <C-O>u
 :map <C-y> <C-O><C-r>
 " audvelt ad skilgr func breytu
-:imap FF = function () {<CR>}<Left><CR><Up><Tab>
+:imap <C-f> = function () {<CR>}<Left><CR><Up><Tab>
 " mappa NN og PP a ad hoppa a milli buffera
 :map NN :bn!<CR>
 :map PP :bp!<CR>
