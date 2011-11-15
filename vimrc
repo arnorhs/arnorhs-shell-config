@@ -32,10 +32,10 @@ set encoding=utf8
 " audvelt ad skilgr func breytu
 :imap <C-f> = function () {<CR>}<Left><CR><Up><Tab>
 " mappa NN og PP a ad hoppa a milli buffera
-:map NN :bn!<CR>
-:map PP :bp!<CR>
-:imap NN <C-O>:bn!<CR>
-:imap PP <C-O>:bp!<CR>
+:map <C-l> :bn!<CR>
+:map <C-h> :bp!<CR>
+:imap <C-l> <C-O>:bn!<CR>
+:imap <C-h> <C-O>:bp!<CR>
 
 " ---------------------------------------------------------------------
 " eitthvad copy fra http://items.sjbach.com/319/configuring-vim-right
@@ -55,7 +55,7 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 set visualbell
 
-
+set autochdir
 
 
 
