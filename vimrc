@@ -9,6 +9,8 @@ call pathogen#helptags()
 " tabstops..
 :set tabstop=4
 :set sw=4
+:set softtabstop=4
+:set expandtab
 " set c-style indenting according to brackets - for autoindent magic
 :set cindent
 " choose a better font
