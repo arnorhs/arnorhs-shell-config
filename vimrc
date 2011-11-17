@@ -3,6 +3,9 @@
 " enable plugins
 :filetype plugin on
 
+au! BufRead,BufNewFile *.sass setfiletype sass
+au! BufRead,BufNewFile *.styl setfiletype sass
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
