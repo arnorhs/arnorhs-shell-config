@@ -1,0 +1,21 @@
+[user]
+	name = arnorhs
+	email = arnorhs@gmail.com
+[color]
+        branch = true
+        diff = true
+        status = true
+[push]
+        default = current
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        br = branch
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        type = cat-file -t
+        dump = cat-file -p
+        fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#`git rev-parse --show-toplevel`/#"' -
+        vim   = ! sh -c 'vim `git fshow $1`' -
+        mvim  = ! sh -c 'mvim `git fshow $1`' -
+
