@@ -10,9 +10,9 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " tabstops..
-:set tabstop=4
-:set sw=4
-:set softtabstop=4
+:set tabstop=2
+:set sw=2
+:set softtabstop=2
 :set expandtab
 " set c-style indenting according to brackets - for autoindent magic
 :set cindent
