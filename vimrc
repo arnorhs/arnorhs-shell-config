@@ -9,6 +9,8 @@ au! BufRead,BufNewFile *.styl setfiletype sass
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+syntax on
+
 " tabstops..
 :set tabstop=2
 :set sw=2
