@@ -44,6 +44,8 @@ set encoding=utf8
 :map <C-h> :bp!<CR>
 :imap <C-l> <C-O>:bn!<CR>
 :imap <C-h> <C-O>:bp!<CR>
+" Map Ctrl+k to open the current directory:
+:map <C-k> :e .<CR>
 
 " ---------------------------------------------------------------------
 " eitthvad copy fra http://items.sjbach.com/319/configuring-vim-right
