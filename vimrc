@@ -15,7 +15,8 @@ call pathogen#helptags()
 :set softtabstop=2
 :set expandtab
 " set c-style indenting according to brackets - for autoindent magic
-:set cindent
+" :set cindent
+set nocindent smartindent
 " choose a better font
 :set guifont=Inconsolata:h14
 " show line numbers
