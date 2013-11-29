@@ -23,4 +23,4 @@
 
 [core]
         editor = vim
-        excludesfile = ~/.vim/.gitignore_global
+        excludesfile = ~/.vim/gitignore_global
