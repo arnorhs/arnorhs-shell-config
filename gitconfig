@@ -16,6 +16,11 @@
         type = cat-file -t
         dump = cat-file -p
         fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#`git rev-parse --show-toplevel`/#"' -
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         vim   = ! sh -c 'vim `git fshow $1`' -
         mvim  = ! sh -c 'mvim `git fshow $1`' -
+        brr = for-each-ref --sort=-committerdate refs/heads/
 
+[core]
+        editor = vim
+        excludesfile = ~/.vim/.gitignore_global
