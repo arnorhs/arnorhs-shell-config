@@ -12,9 +12,9 @@ call pathogen#helptags()
 syntax on
 
 " tabstops..
-:set tabstop=2
-:set sw=2
-:set softtabstop=2
+:set tabstop=4
+:set sw=4
+:set softtabstop=4
 :set expandtab
 " set c-style indenting according to brackets - for autoindent magic
 " :set cindent
@@ -23,6 +23,8 @@ set nocindent smartindent
 :set guifont=Inconsolata:h14
 " show line numbers
 :set number
+
+:set nofoldenable
 
 " start maximized:
 au GUIEnter * simalt ~x
