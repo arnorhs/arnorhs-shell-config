@@ -22,5 +22,6 @@
         brr = for-each-ref --sort=-committerdate refs/heads/
 
 [core]
-        editor = vim
-        excludesfile = ~/.vim/gitignore_global
+    editor = vim
+	excludesfile = ~/.gitignore
+	pager = less -x1,5
