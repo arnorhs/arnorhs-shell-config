@@ -19,9 +19,10 @@
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         vim   = ! sh -c 'vim `git fshow $1`' -
         mvim  = ! sh -c 'mvim `git fshow $1`' -
-        brr = for-each-ref --sort=-committerdate refs/heads/
+        brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/' | head -n 15
 
 [core]
     editor = vim
 	excludesfile = ~/.gitignore
 	pager = less -x1,5
+    autocrlf = input
