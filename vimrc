@@ -75,7 +75,5 @@ set visualbell
 
 set autochdir
 
-
-
 " For the ctrl+p plugin.. 
 set wildignore+=*/.git*,*/node_modules/*
