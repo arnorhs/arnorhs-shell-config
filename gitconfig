@@ -26,3 +26,5 @@
 	excludesfile = ~/.gitignore
 	pager = less -x1,5
     autocrlf = input
+[pull]
+	ff = only
