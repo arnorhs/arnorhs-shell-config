@@ -3,10 +3,9 @@
 autoload -U select-word-style
 select-word-style bash
 
-
 # prompt
 # from
-PROMPT='%F{blue}%1~%f %# '
+PROMPT='%F{blue}%3~%f %# '
 
 # cant be without this
 alias g='grep -iRn --color'
@@ -85,4 +84,6 @@ vsc() {
     fi
     open $X -a 'visual studio code'
 }
+
+setopt no_nomatch
 
