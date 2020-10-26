@@ -24,66 +24,88 @@ alias du2='duf --max-depth=2'
 alias du0='duf --max-depth=0'
 
 jump() {
-    JUMPLOG=$HOME/.jumplog
-    JUMPFAVS=$HOME/.jumpfavs
+  JUMPLOG=$HOME/.jumplog
+  JUMPFAVS=$HOME/.jumpfavs
 
-    touch $JUMPFAVS
+  touch $JUMPFAVS
 
-    if [[ $1 == \-* ]]
+  if [[ $1 == \-* ]]
+  then
+    JUMPNUM=$(echo $1 | cut -c2-)
+    if [[ $JUMPNUM =~ '^[0-9]+$' ]]
     then
-      JUMPNUM=$(echo $1 | cut -c2-)
-      if [[ $JUMPNUM =~ '^[0-9]+$' ]]
-      then
-          JUMPNAME=$(tail -$JUMPNUM $JUMPLOG | head -n 1)
-      else
-          #while IFS= read -r line; do
-          #  echo "$line"
-          #done < $JUMPFAVS
-          echo "^$JUMPNUM\s$"
-          fav=$(grep -E "^$JUMPNUM\\s" $JUMPFAVS)
-
-          echo "fav found: $fav"
-          return
-      fi
+      JUMPNAME=$(tail -$JUMPNUM $JUMPLOG | head -n 1)
     else
-      echo "$1" >> $JUMPLOG
-      JUMPNAME=$1
+      #while IFS= read -r line; do
+      #  echo "$line"
+      #done < $JUMPFAVS
+      echo "^$JUMPNUM\s$"
+      fav=$(grep -E "^$JUMPNUM\\s" $JUMPFAVS)
+
+      echo "fav found: $fav"
+      return
     fi
+  else
+    echo "$1" >> $JUMPLOG
+    JUMPNAME=$1
+  fi
 
-    echo "jumping to '$JUMPNAME'"
+  echo "jumping to '$JUMPNAME'"
 
-    cd $HOME/projects/$JUMPNAME
+  cd $HOME/projects/$JUMPNAME
 }
 
 removecontainers() {
-    docker stop $(docker ps -aq)
-    docker rm $(docker ps -aq)
+  docker stop $(docker ps -aq)
+  docker rm $(docker ps -aq)
 }
 
 armageddon() {
-    removecontainers
-    docker network prune -f
-    docker rmi -f $(docker images --filter dangling=true -qa)
-    docker volume rm $(docker volume ls --filter dangling=true -q)
-    docker rmi -f $(docker images -qa)
+  removecontainers
+  docker network prune -f
+  docker rmi -f $(docker images --filter dangling=true -qa)
+  docker volume rm $(docker volume ls --filter dangling=true -q)
+  docker rmi -f $(docker images -qa)
 }
 
 wip() {
-    git add -A
-    git commit -m'wip'
-    git push
+  git add -A
+  git commit -m'wip'
+  git push
 }
 
 
 vsc() {
-    if [[ $1 == \-* ]]
-    then
-        X=$1
-    else
-        X="."
+  if [[ $1 == \-* ]]
+  then
+      X=$1
+  else
+      X="."
+  fi
+  open $X -a 'visual studio code'
+}
+
+gatsby_kill() {
+  PSAUX="$(ps)"
+
+  while IFS= read -r line; do
+    if [[ $line == *"gatsby develop"* ]]; then
+      id=$(echo $line | cut -d " " -f 1)
+      kill -9 $id
+      echo "killed 'gatsby develop' process $id"
     fi
-    open $X -a 'visual studio code'
+  done <<< "$PSAUX"
 }
 
 setopt no_nomatch
+
+alias composer="php /usr/local/bin/composer"
+
+# this is for zsh-completion brew package:
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
