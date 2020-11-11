@@ -71,7 +71,7 @@ armageddon() {
 wip() {
   git add -A
   git commit -m'wip'
-  git push
+  git push origin $(git symbolic-ref -q HEAD)
 }
 
 
@@ -109,3 +109,14 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+# experimental
+#
+port_kill () {
+  PORT=$1
+
+  lsof -nP -i4TCP:$PORT | grep LISTEN | sed -n 's@[a-zA-Z]*[ ]*@@p' | sed -n 's@[ ].*@@p' | xargs kill -9
+}
+
+
+#  things
+alias http-server='http-server -c-1 -g'
