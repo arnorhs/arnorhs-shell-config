@@ -8,7 +8,7 @@ select-word-style bash
 PROMPT='%F{blue}%3~%f %# '
 
 # cant be without this
-alias g='grep -iRn --color'
+alias g='grep -iRn --exclude-dir=node_modules --color'
 alias ls='ls -laG'
 
 # from http://spf13.com/post/human-readable-du-sorted-by-size/
@@ -69,8 +69,10 @@ armageddon() {
 }
 
 wip() {
+  local defmsg="wip"
+  local msg=${1:-$defmsg}
   git add -A
-  git commit -m'wip'
+  git commit -m"$msg"
   git push origin $(git symbolic-ref -q HEAD)
 }
 
@@ -117,6 +119,12 @@ port_kill () {
   lsof -nP -i4TCP:$PORT | grep LISTEN | sed -n 's@[a-zA-Z]*[ ]*@@p' | sed -n 's@[ ].*@@p' | xargs kill -9
 }
 
+port_list () {
+  PORT=$1
+
+  lsof -nP -i4TCP:$PORT | grep LISTEN
+}
+
 
 #  things
-alias http-server='http-server -c-1 -g'
+alias serve='http-server -c-1 -g'
