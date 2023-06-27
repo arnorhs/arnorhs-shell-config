@@ -128,3 +128,7 @@ port_list () {
 
 #  things
 alias serve='http-server -c-1 -g'
+
+export PATH=$PATH:node_modules/.bin
+
+alias ip='ifconfig | grep "inet "'
