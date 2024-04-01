@@ -20,6 +20,7 @@
         vim   = ! sh -c 'vim `git fshow $1`' -
         mvim  = ! sh -c 'mvim `git fshow $1`' -
         brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/' | head -n 40
+        wip = ! sh -c 'git add -A && git commit -mwip'
 
 [core]
     editor = vim
