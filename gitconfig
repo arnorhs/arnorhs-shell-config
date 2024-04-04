@@ -19,7 +19,7 @@
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         vim   = ! sh -c 'vim `git fshow $1`' -
         mvim  = ! sh -c 'mvim `git fshow $1`' -
-        brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/' | head -n 40
+        brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/ | head -n ${1-30}' -
         wip = ! sh -c 'git add -A && git commit -mwip'
 
 [core]
