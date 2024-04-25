@@ -125,6 +125,10 @@ port_list () {
   lsof -nP -i4TCP:$PORT | grep LISTEN
 }
 
+jwtdecode() {
+  sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq
+}
+
 
 #  things
 alias serve='http-server -c-1 -g'
