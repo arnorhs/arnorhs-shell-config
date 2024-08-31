@@ -8,7 +8,7 @@ select-word-style bash
 PROMPT='%F{blue}%3~%f %# '
 
 # cant be without this
-alias g='grep -iRn --exclude-dir=node_modules --color'
+alias g='grep -iRn --exclude-dir={node_modules,.git,.next,dist} --color'
 alias ls='ls -laG'
 
 # from http://spf13.com/post/human-readable-du-sorted-by-size/
@@ -136,3 +136,5 @@ alias serve='http-server -c-1 -g'
 export PATH=$PATH:node_modules/.bin
 
 alias ip='ifconfig | grep "inet "'
+
+alias gti=git
