@@ -1,34 +1,29 @@
-[user]
-	name = arnorhs
-	email = arnorhs@gmail.com
 [color]
-        branch = true
-        diff = true
-        status = true
+  branch = true
+  diff = true
+  status = true
 [push]
-        default = nothing
+  default = nothing
 [alias]
-        co = checkout
-        ci = commit
-        st = status
-        br = branch
-        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-        fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#`git rev-parse --show-toplevel`/#"' -
-        vim   = ! sh -c 'vim `git fshow $1`' -
-        mvim  = ! sh -c 'mvim `git fshow $1`' -
-        brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/ | head -n ${1-30}' -
-        wip = ! sh -c 'git add -A && git commit -mwip' -
-        todo = ! sh -c 'git diff origin/master | grep -iE "\\\\+.*\\\\/\\\\/\\\\stodo" -C1 ' -
-        update = ! sh -c 'git fetch && git rebase ${1-"origin/master"}' -
-        base = merge-base HEAD origin/master
-        squash = ! sh -c 'git rebase -i $(git merge-base origin/master HEAD)' -
-        lg = ! sh -c 'git log origin/master..'
-        amend = ! sh -c 'git add -A && git commit --amend --no-edit --date now' -
-
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#`git rev-parse --show-toplevel`/#"' -
+  brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/ | head -n ${1-30}' -
+  wip = ! sh -c 'git add -A && git commit -mwip' -
+  todo = ! sh -c 'git diff ${1-"origin/master"} | grep -iE "\\\\+.*\\\\/\\\\/\\\\stodo" -C1 ' -
+  update = ! sh -c 'git fetch && git rebase ${1-"origin/master"}' -
+  base = merge-base HEAD origin/master
+  basemain = merge-base HEAD origin/master
+  squash = ! sh -c 'git rebase -i $(git merge-base HEAD ${1-"origin/master"})' -
+  lg = ! sh -c 'git log origin/master..'
+  amend = ! sh -c 'git add -A && git commit --amend --no-edit --date now' -
 [core]
-    editor = vim
-	excludesfile = ~/.gitignore
-	pager = less -x1,5
-    autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore
+  pager = less -x1,5
+  autocrlf = input
 [pull]
-	ff = only
+  ff = only
