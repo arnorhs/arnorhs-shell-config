@@ -3,7 +3,8 @@
   diff = true
   status = true
 [push]
-  default = nothing
+  default = current
+  autoSetupRemote = true
 [alias]
   co = checkout
   ci = commit

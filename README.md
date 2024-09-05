@@ -30,12 +30,22 @@ things you end up using:
   source ~/arnorhs-shell-config/.bash_profile
   ```
 - **gitconfig aliases and defaults**
-  Use the `.gitconfig` file without changing/deleting your existing one (and thus allowing you
-  to keep using your own `user.name` / `user.email` settings) - edit (or create) your
-  `~/.gitconfig` file and append the following:
+  Use the `git/base.gitconfig` file without changing/deleting your existing one (and thus
+  allowing you to keep using your own `user.name` / `user.email` settings and allows for
+  overriding anything else) - edit (or create) your `~/.gitconfig` file and append the
+  following:
   ```
   [include]
-    path = arnorhs-shell-config/.gitconfig
+    path = arnorhs-shell-config/git/base.gitconfig
+  ```
+- **gitconfig for delta aliases and defaults**
+  I started using [git-delta](https://github.com/dandavison/delta) to highlight my diffs. It
+  adds way too much UI to the diffs in my opinion, so I'll probably tweak the settings with
+  time, but you need to [install it](https://dandavison.github.io/delta/installation.html) and then
+  include:
+  ```
+  [include]
+    path = arnorhs-shell-config/git/delta.gitconfig
   ```
 - **vim config**
   Sym link config files for .vim
