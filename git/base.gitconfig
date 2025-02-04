@@ -12,7 +12,7 @@
   br = branch
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#`git rev-parse --show-toplevel`/#"' -
-  brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/ | head -n ${1-30}' -
+  brr = ! sh -c 'git for-each-ref --sort=-committerdate refs/heads/ | grep -oE [^/]+$ | head -n ${1-12}' -
   wip = ! sh -c 'git add -A && git commit -mwip' -
   todo = ! sh -c 'git diff ${1-"origin/master"} | grep -iE "\\\\+.*\\\\/\\\\/\\\\stodo" -C1 ' -
   update = ! sh -c 'git fetch && git rebase ${1-"origin/master"}' -
@@ -28,3 +28,5 @@
   autocrlf = input
 [pull]
   ff = only
+[advice]
+  skippedCherryPicks = false

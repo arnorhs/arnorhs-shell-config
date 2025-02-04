@@ -8,3 +8,9 @@ alias ip='ifconfig | grep "inet "'
 
 # Because i'm a dumbass
 alias gti=git
+
+alias amend='git commit --amend'
+
+alias btop='btop --low-color'
+
+alias ghpr='gh pr create --label=automerge --fill-first'

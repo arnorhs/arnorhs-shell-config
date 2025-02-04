@@ -27,3 +27,6 @@ fi
 # this makes it so that if you are in a node repo, it will allow you to run the
 # registered scripts from the shell without prefixing with ./node_modules/.bin
 export PATH=$PATH:node_modules/.bin
+
+# If you are using `fd`, its color scheme is pretty opinionated unless you set this:
+export LS_COLORS=''
