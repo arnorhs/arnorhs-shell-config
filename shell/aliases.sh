@@ -14,3 +14,4 @@ alias amend='git commit --amend'
 alias btop='btop --low-color'
 
 alias ghpr='gh pr create --label=automerge --fill-first'
+alias prview='gh pr view --web'
