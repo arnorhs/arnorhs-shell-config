@@ -20,7 +20,7 @@
   update = ! sh -c 'git fetch && git rebase ${1-"origin/master"}' -
   base = merge-base HEAD origin/master
   basemain = merge-base HEAD origin/master
-  squash = ! sh -c 'git rebase -i $(git merge-base HEAD ${1-"origin/master"})' -
+  squash = ! sh -c '$(git diff HEAD --exit-code > /dev/null) && git reset $(git merge-base HEAD ${1-"origin/master"}) && git add -A && git commit || echo "unstaged changes"' -
   lg = ! sh -c 'git log origin/master..'
   amend = ! sh -c 'git add -A && git commit --amend --no-edit --date now' -
 [core]
